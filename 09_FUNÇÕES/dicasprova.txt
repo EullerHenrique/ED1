@@ -1,0 +1,86 @@
+1)Irá cair uma questão na prova perguntando sobre o tempo de acesso de um array
+2)Lembre-se de saber o tamanho em bytes de cada tipo de váriavel, IRA CAIR NA PROVA
+3)Saber porque ponteiro tem tipo
+4)Saber por que não se pode utilizar ponteiro sem outra váriavel para guardar o valor
+5)Saber a utilidade do NULL
+
+incerta = 6)saber porque não se pode atribuir um vetor de char a outro
+
+
+1) Por que o tempo de acesso a cada elemento de um vetor é igual?
+
+R: O tempo de acesso a cada elemento de um vetor é igual porque vetores são continuos, isto é, os elementos são alocados um depois do outro. Tal fato permite que o processador tenha que fazer somente uma simples adição no laço for para conseguir inserir um elemento no endereço desejado ou acessar o conteudo do endereço desejado. 
+ex: 
+int vet[5] = {0};
+
+for(int i = 0; i < 5; i++){
+	scanf("%d",(vet + i); // por meio de uma simples adição, é inserido um elemento no &vet + i.	
+	printf("%d",*(vet + i); // por meio de uma simples adição, o valor de &vet + i é acessado. 
+
+}
+
+2) Diga o tamanho dos respectivos tipos:
+	char = 1 byte.               *char = 4bytes. 
+	int  = 4 bytes.				 *int = 4 bytes.
+	float = 4 bytes.			 *float = 4 bytes.	
+	double = 8 bytes.			 *double = 8 bytes.
+	
+	unsigned char = 1 byte.		 *unsigned char = 4 bytes.
+	unsigned int = 4 bytes. 	 *unsigned int = 4 bytes.
+	unsigned long int = 8 bytes. *unsigned long = 4 bytes.
+
+	long long int = 8 bytes. 	 *long long int =  4 bytes.
+	long double = 16 bytes. 	 *long double = 16 bytes.
+
+3) Por que o ponteiro tem tipo?
+	R: O ponteiro possui tipo porque ele precisa saber a quantidade de endereços(em bytes) que terá que acessar para conseguir manipular o conteúdo destes endereços. 
+	
+	Por exemplo, se a váriavel do valor a ser lido é um inteiro o ponteiro terá que ser um inteiro, pois como a variavel int possui 4bytes o ponteiro terá que saber que tal váriavel possui 4 bytes e onde estão localizados estes 4bytes, ou seja, os endereços da váriavel. 
+
+	Somente desta maneira o ponteiro irá conseguir acessar e manipular os dados armazenados nestes endereços, pois se ele não soubesse o tamanho da váriavel não saberia os endereços que aquela váriavel utiliza.
+
+
+4)Está correto?
+	double *ppreco; 
+	*ppreco = 50.0;
+
+R: Não, pois não houve alocação para guardar um número double, ou seja, não há nenhuma váriavel para guardar um número double. Há somente alocação para guardar um ponteiro para double.
+
+Para este programa funcionar o ponteiro precisa saber para onde está apontando, ou seja, ele precisa saber em que endereço será armazenado o 50.
+
+O programa correto ficaria assim:
+
+#include <stdio.h>
+
+int main(void){
+	double preco = 0;
+	double *ppreco = NULL;	
+	
+	ppreco = &preco; 
+	*ppreco = 50.0;
+
+	printf("%lf",*ppreco);
+
+return 0;
+}
+
+5)Qual é a utilidade de inicializar um ponteiro com NULL?
+	R: Quando declaramos um ponteiro sem NULL ele se inicializa com lixo.
+	Portanto, a utilidade de inicializar um ponteiro com NULL é evitar que o programa altere o que está no endereço do lixo. 
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
