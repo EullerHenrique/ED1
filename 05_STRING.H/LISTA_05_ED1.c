@@ -1,94 +1,50 @@
 /*Questão 01*/
 
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 
 int main(void){
-	int val[5] = {2,4,5,8,10};
+	char nome[51] = {'\0'};
+	
+	printf("<<Vetor de Char>>\n");
 
-	unsigned long int p = 0;
-	p = &val[2];
+	printf("Digite um nome: ");
+	gets(nome);
+	nome[strcspn(nome,"\n")] = '\0';
 
-	printf("Digite 6: ");
-	scanf("%d",p);
-
-	for(int i = 0 ; i < 5; i++){
-		printf("%d",val[i]);
-	}
-	printf("\n");
+	printf("O nome digitado é:%s\n",nome);
 
 return 0;
 }
 
-/*Questão 02*/
+/*Questão 2*/
 
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 
 int main(void){
-	int val[5] = {2,4,5,8,10};
+	char maiusculo[51] = {'\0'};
+	char minusculo[51] = {'\0'};
+	char c = '\0';
 	
-	int *pval = NULL;
-	pval = &val[4];
+	printf("<<Vetor de Char>>\n\n");
+	printf("Digite um nome: ");
 
-	int a = 40;
-	
-	int *pa;
-	pa = &a;
+	setbuf(stdin,NULL); 
 
-	/*a) */
-	
-	printf("Endereço de 'a' usando o &a: %u",&a);
-	printf("\n");
-	printf("Endereço de 'a' usando o pa: %u",pa);
-	printf("\n\n");
-
-	/*b) */
-	
-	printf("Digite o novo valor de 'a': ");
-	scanf("%d",pa);
-	printf("Novo valor de 'a': %d ",a);
-	printf("\n\n");
-
-	/*c) */
-
-	printf("Digite 20 para alterar o quarto indice do vetor val: ");
-	scanf("%d",pval);
-
-	printf("Novo vetor: ");
-	for(int i = 0; i < 5; i++){
-		printf("%d ",val[i]);
+	for(int i = 0; c != '\n';i++){ 
+		c = getchar(); 
+		maiusculo[i] = toupper(c);
+		minusculo[i] = tolower(c);
 	}
-	printf("\n\n");
-
-	/*D) */
-
-	printf("Valor da váriavel a: %d",a);
-	printf("\n");
-	printf("Valor da váriavel pa %u",pa);
-	printf("\n");
-
-	printf("Endereço da váriavel a: %u",&a);
-	printf("\n");
-	printf("Endereço da váriavel pa: %u",&pa);
-	printf("\n\n");
-
-	for(int i = 0; i < 5;i++){
-		printf("Valor do vetor val[%d]: %d",i,val[i]);
-		printf("\n");
-	}
-	printf("\n");
-
-
-	for(int i = 0; i < 5; i++){
-		printf("Endereço do vetor val[%d]: %u",i,&val[i]);
-		printf("\n");
-	}
-	printf("\n");
 	
-	printf("Valor da váriavel pval: %u",pval);
-	printf("\n");
-	printf("Endereço da váriavel pval: %u",&pval);
-	printf("\n\n");
-	
+	maiusculo[strcspn(maiusculo,"\n")] = '\0';
+	minusculo[strcspn(minusculo,"\n")] = '\0';
+
+	printf("O nome digitado é: %s\n",maiusculo);
+	printf("O nome digitado é: %s\n",minusculo);
 
 return 0;
 }
@@ -96,248 +52,417 @@ return 0;
 /*Questão 03*/
 
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 
 int main(void){
-	int val[5] = {2,4,5,8,10};
+	char nome1[51] = {'\0'};
+	char nome2[51] = {'\0'};
+
+	printf("<<Compara nomes>>\n\n");
+
+	printf("Digite o nome 1: ");
+	fgets(nome1,sizeof(nome1),stdin);
+	nome1[strcspn(nome1,"\n")] = '\0';
 	
-	int *pval = NULL;
-	pval = &val[0];
+	printf("Digite o nome 2: ");
+	fgets(nome2,sizeof(nome2),stdin);
+	nome2[strcspn(nome2,"\n")] = '\0';
 
-	printf("Vetor: ");
-	for(int i = 0; i < 5; i++){
-		printf("%d ",*(pval + i)); // *(pval + i) = *(&val[0] + i) -- ACESSA O CONTEÚDO DO ENDEREÇO &val[0] + i
+	if(strcmp(nome1, nome2) == 0){
+		printf("Os nomes digitados são iguais\n");
+	}else{
+		printf("Os nomes digitados são diferentes\n");
 	}
-	printf("\n\n");
-
-	for(int i = 0; i < 5; i++){
-		printf("Endereço do vetor val[%d]: %u",i,&val[i]);
-		printf("\n");
-	}
-	printf("\n\n");
-
-	for(int i = 0; i < 5; i++){
-		printf("Valor da váriavel val[%d]: %d",i,val[i]);
-		printf("\n");
-	}
-	printf("\n\n");
-
-	for(int i = 0; i < 5; i++){
-		printf("Valor da váriavel pval[%d]: %u",i,pval[i]);
-		printf("\n");
-	}
-	printf("\n\n");
-
-	
-	for(int i = 0; i < 5; i++){
-		printf("Endereço do vetor pval[%d]: %u",i,&pval[i]);
-		printf("\n");
-	}
-	printf("\n\n");
 
 return 0;
 }
 
-
-/*Questão 04*/
-
+/*Questão 4*/
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 
 int main(void){
-	int val[5] = {2,4,5,8,10};
+	char maiusculo1[51] = {'\0'};
+	char maiusculo2[51] = {'\0'};
+	char c = '\0';
 	
-	int *pval = NULL;
-	pval = &val[0];
+	printf("<<Compara nomes>>\n\n");
 
-	printf("Vetor: ");
-	for(int i = 0; i < 5; i++){
-		(*(pval + i))--; 
-		printf("%d ",*(pval + i)); // *(pval + i) = *(&val[0] + i)
-	}
-	printf("\n\n");
+	printf("Digite o nome 1: ");
+	setbuf(stdin,NULL); 
 
-	for(int i = 0; i < 5; i++){
-		printf("Endereço do vetor val[%d]: %p",i,&val[i]);
-		printf("\n");
+	for(int i = 0; c != '\n';i++){
+		c = getchar();
+		maiusculo1[i] = toupper(c);
 	}
-	printf("\n\n");
+	maiusculo1[strcspn(maiusculo1,"\n")] = '\0';
 
-	for(int i = 0; i < 5; i++){
-		printf("Valor da váriavel val[%d]: %d",i,val[i]);
-		printf("\n");
-	}
-	printf("\n\n");
+	c = '\0';
+	printf("Digite o nome 2: ");	
+	setbuf(stdin,NULL);
 
-	for(int i = 0; i < 5; i++){
-		printf("Valor da váriavel pval[%d]: %d",i,*(pval + i));
-		printf("\n");
+	for(int i = 0; c != '\n'; i++){ 
+		c = getchar(); 
+		maiusculo2[i] = toupper(c);
 	}
-	printf("\n\n");
+	maiusculo2[strcspn(maiusculo2,"\n")] = '\0';
 
-	
-	for(int i = 0; i < 5; i++){
-		printf("Endereço do vetor pval[%d]: %p",i,(pval + i));
-		printf("\n");
+	if(strcmp(maiusculo1, maiusculo2) == 0){
+		printf("Os nomes digitados são iguais\n");
+	}else{
+		printf("Os nomes digitados são diferentes\n");
 	}
-	printf("\n\n");
+
+return 0;
 }
 
 /*Questão 05*/
-/*Questão 5*/
 
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 
-int main(Void){
-	int v1 = 1;
-	double v2 = 2;
-	char c = 'a';
+int main(void){
+	char nome[41] = {'\0'};
+	char nome1[41] = {'\0'};
+	char nome2[41] = {'\0'};
+	int espaco = 0;
+
+	printf("<<Vetor de Char>>\n\n");
+	printf("Digite um nome e sobrenome: ");
 	
-	int *p_v1;
-	double *p_v2;
-	char *p_c;
+	fgets(nome, sizeof(nome),stdin);
+	nome[strcspn(nome,"\n")] = '\0';
 
-	p_v1 = &v1;
-	p_v2 = &v2;
-	p_c = &c;
+	espaco = strcspn(nome," "); // quantos carateres tem até chegar no espaço
+	strncpy(nome1,nome,espaco); // copia todos os caracteres até o espaco do vetor nome para o vetor nome1
+	strcpy(nome2,nome + espaco+1); // copia todos os caracteres depois do espaço do vetor nome para o vetor nome2
 
-	printf("Endereço de v1 %lu", p_v1);
+	printf("Nome: %s",nome1);
 	printf("\n");
-	printf("Endereço de v2 %lu", p_v2);
+	printf("Sobrenome: %s",nome2);
 	printf("\n");
-	printf("Endereço de c %lu", p_c);
-	printf("\n\n");
 
-	printf("Endereço+1 de v1 %lu", p_v1 + 1);
-	printf("\n");
-	printf("Endereço+1 de v2 %lu", p_v2 + 1);
-	printf("\n");
-	printf("Endereço+1 de c %lu", p_c + 1);
-	printf("\n\n");
-
-	printf("Endereço-1 de v1 %lu", p_v1 - 1);
-	printf("\n");
-	printf("Endereço-1 de v2 %lu", p_v2 - 1);
-	printf("\n");
-	printf("Endereço-1 de c %lu", p_c - 1);
-	printf("\n\n");
-
-	printf("Endereço+2 de v1 %lu", p_v1 + 2);
-	printf("\n");
-	printf("Endereço+2 de v2 %lu", p_v2 + 2);
-	printf("\n");
-	printf("Endereço+2 de c %lu", p_c + 2);
-	printf("\n\n");
-
-	printf("Endereço-2 de v1 %lu", p_v1 - 2);
-	printf("\n");
-	printf("Endereço-2 de v2 %lu", p_v2 - 2);
-	printf("\n");
-	printf("Endereço-2 de c %lu", p_c - 2);
-	printf("\n\n");
-
-
-	printf("-----------------------------------------------------------------------------------------------------------------------------------------------------\n");
-	printf("Nome          Endereço var-2              Endereço var-1              Endereço var               Endereço v1 + 1                 Endereço v1 +2 \n");
-	printf("variável/\n");
-	printf("Endereços\n");
-	printf("-----------------------------------------------------------------------------------------------------------------------------------------------------\n");
-	printf("p_v1          %lu             %lu             %lu            %lu                 %lu\n", p_v1 - 2, p_v1 - 1, p_v1, p_v1 + 1, p_v1 + 2);
-	printf("p_v2          %lu             %lu             %lu            %lu                 %lu\n", p_v2 - 2, p_v2 - 1, p_v2, p_v2 + 1, p_v2 + 2);
-	printf("p_c           %lu             %lu             %lu            %lu                 %lu\n", p_c - 2 , p_c - 1, p_c, p_c + 1, p_c + 2);
-	printf("-----------------------------------------------------------------------------------------------------------------------------------------------------\n");
-
-return 0;
+	return 0;
 }
 
 /*Questão 06*/
 
-/*
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 
-Houve um comportamento diferente no exercicio anterior ao somarmos/subtrairmos o valor de cada ponteiro, pois o tipo de cada ponteiro está associado ao tipo da váriavel associada.
+int main(void){
 
-Como o tipo char possui como tamanho 1byte, quando somamos 1 /subtraimos 1 o valor do ponteiro p_c (que no caso é o endereço de c) é adicionado/subtraido somente 1 byte no endereço de c.  
-como o tipo int possui como tamanho 4bytes, quando somamos 1 /subtraimos 1 o valor do ponteiro p_v1 (que no caso é o endereço de v1) é adicionado/subtraido 4 bytes no endereço de v1,
-pois a a contagem começa no quarto endereço reservado para a váriavel v1.  
+	char nome[41] = {'\0'};
+	int tamanho = 0;
 
-Como o tipo double possui como tamanho 8bytes, quando somamos 1 /subtraimos 1 o valor do ponteiro p_v2(que no caso é o endereço de v2) é adicionado/subtraido 8 bytes no endereço de v2,
-pois a contagem começa no oitavo endereço reservado para a várivel v2.  
+	printf("<<Separa letra>>\n\n");
 
-*/
+	printf("Digite o nome: ");
+	fgets(nome, sizeof(nome),stdin);
+	nome[strcspn(nome,"\n")] = '\0'; // zera o '\n'
+
+	printf("\n\n");
+	tamanho = strlen(nome);
+	
+	for(int i = 0; i < tamanho; i++){
+		printf("%d letra:%c \n",i+1,nome[i]);
+	}
+
+	return 0;
+}
 
 /*Questão 07*/
 
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 
 int main(void){
-	char nome[13] = "José Augusto";
+	char vet[41] = {'\0'};
+	char c = '\0';
 
-	printf("O nome digitado foi: ");
-	for(int j = 0; j < 13; j++){
-		printf("%c",*(pnome +j)); // *(pnome + j) = *(&nome[0] + i); ex : &nome[0] = 1, *(&1 + 1) = *(&2) => Acessa o conteúdo do endereço 2 da variável nome
+	printf("<<Sem vogais>>\n\n");
+	printf("Digite a string: ");
+	
+	setbuf(stdin,NULL); 
+	for(int i = 0; c != '\n';){		
+		
+		c = getchar();
+	
+		if(c != 'A' && c != 'a' && c != 'E' && c != 'e' && c != 'I' && c != 'i' && c != 'O' && c != 'o' && c != 'U' && c != 'u'){	
+			vet[i] = c;
+			i++;
+		}
 	}
+	vet[strcspn(vet,"\n")] = '\0';
 	printf("\n");
 
-return 0;
-
+	printf("Saída sem vogais: %s\n",vet);
+	return 0;
 }
 
 /*Questão 08*/
 
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 
 int main(void){
-	int a  = 0;
-	double b = 0;
-
-	void *p = NULL;
-
-	p = &a; 
-	printf("Digite o valor de a: ");
-	scanf("%d", (int*)p);
-
-
-	printf("Digite o valor de b: ");
-	p = &b;
-	scanf("%lf", (double*)p);
-	printf("\n");
-
-	p = &a;
-	printf("O valor de a é: %d",*(int *)p);
-	printf("\n");
+	char nome[41] = {'\0'};
+	char cpf[41] = {'\0'};
+	char rg[41] = {'\0'};
+	char endereco[41] = {'\0'};
+	char cidade[41] = {'\0'};
+	char estado[11] = {'\0'};
+	char cep[11] = {'\0'};
 	
-	p = &b;
-	printf("O valor de b é: %lf",*(double*)p);
-	printf("\n");
+	setbuf(stdin,NULL); 
+	printf("Digite seu nome: ");
+	fgets(nome,sizeof(nome),stdin);
+	nome[strcspn(nome,"\n")] = '\0';
 
-return 0;
+	setbuf(stdin,NULL); 
+	printf("Digite seu CPF: "); 
+	fgets(cpf,sizeof(cpf),stdin);
+	cpf[strcspn(cpf,"\n")] = '\0';
+
+	setbuf(stdin,NULL); 
+	printf("Digite seu RG: ");
+	fgets(rg,sizeof(rg),stdin);
+	rg[strcspn(rg,"\n")] = '\0';
+
+	setbuf(stdin,NULL); 
+	printf("Digite seu endereco: ");
+	fgets(endereco,sizeof(endereco),stdin);
+	endereco[strcspn(endereco,"\n")] = '\0';
+	
+	setbuf(stdin,NULL); 
+	printf("Digite sua cidade: ");
+	fgets(cidade,sizeof(cidade),stdin);
+	cidade[strcspn(cidade,"\n")] = '\0';
+	
+	setbuf(stdin,NULL); 
+	printf("Digite seu estado: ");
+	fgets(estado,sizeof(estado),stdin);
+	estado[strcspn(estado,"\n")] = '\0';
+
+	setbuf(stdin,NULL); 
+	printf("Digite seu cep: ");
+	fgets(cep,sizeof(cep),stdin);
+	cep[strcspn(cep,"\n")] = '\0';
+	
+	printf("\n\n");
+	printf("               D E C L A R A Ç Ã O\n\n\n");
+
+
+	printf("Eu, %s,RG %s, CPF %s,\n",nome,rg,cpf);
+	printf("residente da %s,%s-%s,\n",endereco,cidade,estado);
+	printf("CEP %s venho por meio desta declarar que vou estudar para a prova\n",cep);
+return 0;		     
 }
 
-/*Questão 09*/
+ /* Questão 9*/
 
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 
 int main(void){
-	double vet[10] = {1,2,3,4,5,6,7,8,9,10};
+	char vet[41] = {'\0'};
+	char vet2[41] = {'\0'};
+	int tamanho = 0;
+	int i = 0;
 
-	for(int i = 0; i < 10; i++){
-		printf("%lf",*(vet+i));
-		printf("\n");
+	printf("<<Invertendo>>\n\n");
+	
+	setbuf(stdin,NULL); 
+	printf("Digite a string: ");
+
+	fgets(vet,sizeof(vet),stdin);
+	vet[strcspn(vet,"\n")] = '\0';
+
+	tamanho = strlen(vet);
+	tamanho--; // faz o tamanho acessar o último indice do vetor. ex: "euller", vet[5] = 'r'
+	
+	for(i = 0; tamanho >= 0; tamanho--,i++){
+		vet2[i] = vet[tamanho]; 	
 	}
+	vet2[i] = '\0';
 
+	printf("\n");
+
+	printf("Saída invertida: %s\n",vet2);
+	
 return 0;
 }
-
 
 /*Questão 10*/
 
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 
 int main(void){
-	int vet[10] = {1,2,3,4,5,6,7,8,9,10};
+	char maiusculo1[41] = {'\0'};
+	char maiusculo2[41] = {'\0'};
+	char c = '\0';
+	int tamanho = 0;
+	int i = 0;
 
-	for(int i = 9; i >= 0; i--){
-		printf("%d",*(vet + i)); 
-		printf("\n");
+ 
+	printf("Digite a string: ");
+	setbuf(stdin,NULL); 
+
+	for(int i = 0; c != '\n';i++){
+		c = getchar();
+		maiusculo1[i] = toupper(c);
 	}
+	maiusculo1[strcspn(maiusculo1,"\n")] = '\0';
+	printf("\n");
 
+	tamanho = strlen(maiusculo1);
+	tamanho--; // faz o tamanho acessar o último indice do vetor. ex: "euller", vet[5] = 'r'
+	
+	for(i = 0; tamanho >= 0; tamanho--,i++){
+		maiusculo2[i] = maiusculo1[tamanho]; 	
+	}
+	maiusculo2[i] = '\0';
+
+	if(strcmp(maiusculo1,maiusculo2) == 0){
+		printf("A string é um palindromo\n");
+	}
+	else{
+		printf("A string não é um palindromo\n");
+	}
+	return 0;
+}
+
+#include <stdio.h>
+#include <string.h>
+
+int main(void){
+	char buff[5] = {'\0'};
+	int pass = 0;
+	
+	printf("Entre com a senha : ");
+	gets(buff);
+	
+	if(strcmp(buff, "1234") != 0){
+		printf ("\nSenha Errada\n");
+	} 
+	else{
+		printf ("\nSenha Correta\n");
+		pass = 1;
+		}
+	
+	if(pass == 1){ /* O usuário acertou a senha, poderá continuar*/
+		printf ("\nAcesso liberado\n");
+	}
+	else{	
+		printf ("\nAcesso negado\n");
+	}
 return 0;
 }
+
+/*Questão 11*/
+
+/* 
+a) Qual é a função do programa?
+
+R: A função do programa é verificar se a senha digitada está correta e liberar o acesso se a senha estiver correta.
+
+b) Qual a saída quando a senha correta é digitada (senha correta: 1234)
+
+R: A saída é: Senha Correta
+			  
+			  Acesso liberado
+
+c) Qual a saída para as seguintes senhas
+
+a. 123
+
+R: A saída é: Senha Errada
+			  
+			  Acesso negado
+
+b. 12345
+
+R: A saída é: Senha Errada
+			  
+			  Acesso negado
+
+c. 123456
+
+R: A saída é:
+			  Senha Errada
+
+			  Acesso negado
+			  *** stack smashing detected ***: <unknown> terminated
+			  Aborted (core dumped)
+
+d) Em quais casos o programa obteve um comportamento inválido. Explique o motivo.
+
+R: O programa obteve um comportamento inválido no caso em que foi digitado "123456", este comportamento ocorreu porque o vetor foi declarado com 5 dígitos, 
+e foi digitado um número com 6 dígitos.
+*/
+
+
+/*Questão 12*/
+
+/* a) Pense em uma solução para o problema do exercício 11 que utiliza fgets.
+Considere que o tamanho máximo de uma senha são 4 dígitos.
+
+R: A solução é aumentar o tamanho do vetor.
+*/
+
+#include <stdio.h>
+#include <string.h>
+
+int main(void){
+	char buff[100] = {'\0'};
+	int pass = 0;
+	
+	printf("Entre com a senha : ");
+    fgets(buff,100,stdin);
+    buff[strcspn(buff,"\n")] = '\0';
+	
+	if(strcmp(buff, "1234") != 0){
+		printf ("\nSenha Errada\n");
+	} 
+	else{
+		printf ("\nSenha Correta\n");
+		pass = 1;
+		}
+	
+	if(pass == 1){ /* O usuário acertou a senha, poderá continuar*/
+		printf ("\nAcesso liberado\n");
+	}
+	else{	
+		printf ("\nAcesso negado\n");
+	}
+return 0;
+}
+
+/*b) Teste com os seguintes valores
+a. 123
+R: A saída é: Senha Errada
+			  
+			  Acesso negado
+
+
+b. 12345
+R: A saída é: Senha Errada
+			  
+			  Acesso negado
+
+
+c. 123456
+R: A saída é: Senha Errada
+			  
+			  Acesso negado
+
+*/
